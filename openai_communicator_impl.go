@@ -10,6 +10,10 @@ type OpenAiApiCommunicatorImpl struct {
 	Client *openai.Client
 }
 
+func CreateOpenAiApiCommunicator(client *openai.Client) OpenAiApiCommunicatorImpl {
+	return OpenAiApiCommunicatorImpl{Client: client}
+}
+
 func (c OpenAiApiCommunicatorImpl) GptCompletion(message string) (string, error) {
 	messages := []openai.ChatCompletionMessage{{
 		Role:    openai.ChatMessageRoleUser,
