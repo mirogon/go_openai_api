@@ -49,16 +49,16 @@ func (mr *MockOpenAiApiCommunicatorMockRecorder) GenerateImage(input interface{}
 }
 
 // GptCompletion mocks base method.
-func (m *MockOpenAiApiCommunicator) GptCompletion(message string) (string, error) {
+func (m *MockOpenAiApiCommunicator) GptCompletion(message string, maxToken int) (string, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GptCompletion", message)
+	ret := m.ctrl.Call(m, "GptCompletion", message, maxToken)
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GptCompletion indicates an expected call of GptCompletion.
-func (mr *MockOpenAiApiCommunicatorMockRecorder) GptCompletion(message interface{}) *gomock.Call {
+func (mr *MockOpenAiApiCommunicatorMockRecorder) GptCompletion(message, maxToken interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GptCompletion", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GptCompletion), message)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GptCompletion", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GptCompletion), message, maxToken)
 }

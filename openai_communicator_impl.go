@@ -14,7 +14,7 @@ func CreateOpenAiApiCommunicator(client *openai.Client) OpenAiApiCommunicatorImp
 	return OpenAiApiCommunicatorImpl{Client: client}
 }
 
-func (c OpenAiApiCommunicatorImpl) GptCompletion(message string) (string, error) {
+func (c OpenAiApiCommunicatorImpl) GptCompletion(message string, maxToken int) (string, error) {
 	messages := []openai.ChatCompletionMessage{{
 		Role:    openai.ChatMessageRoleUser,
 		Content: message,
@@ -23,7 +23,7 @@ func (c OpenAiApiCommunicatorImpl) GptCompletion(message string) (string, error)
 	var request openai.ChatCompletionRequest = openai.ChatCompletionRequest{
 		Model:     openai.GPT3Dot5Turbo,
 		Messages:  messages,
-		MaxTokens: 256,
+		MaxTokens: maxToken,
 	}
 
 	resp, err := c.Client.CreateChatCompletion(context.Background(), request)
