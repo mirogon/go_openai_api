@@ -65,7 +65,8 @@ func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice s
 	response, _ := sendRequest("POST", "https://api.openai.com/v1/audio/speech", request, communicator.OpenAiKey)
 
 	buffer := make([]byte, 1000000)
-	response.Body.Read(buffer)
+	size, _ := response.Body.Read(buffer)
+	fmt.Println("Size: ", size)
 	fmt.Println(string(buffer))
 
 	return "", nil
