@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
 	"strings"
 
@@ -64,13 +65,16 @@ func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice s
 
 	response, _ := sendRequest("POST", "https://api.openai.com/v1/audio/speech", request, communicator.OpenAiKey)
 
-	buffer := make([]byte, 1000000)
-	size, _ := response.Body.Read(buffer)
-	buffer = buffer[:size]
-	fmt.Println("Size: ", size)
-	fmt.Println(string(buffer))
+	bytes, _ := io.ReadAll(response.Body)
+	fmt.Println("size: ", len(bytes))
+	fmt.Println()
+	fmt.Println()
+	fmt.Println(bytes)
+	fmt.Println()
+	fmt.Println()
+	fmt.Println(string(bytes))
 
-	return buffer, nil
+	return bytes, nil
 }
 
 func sendRequest(requestMethod string, requestUrl string, requestBody interface{}, openAiKey string) (*http.Response, error) {
