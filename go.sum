@@ -1,5 +1,9 @@
 github.com/golang/mock v1.6.0 h1:ErTB+efbowRARo13NNdxyJji2egdxLGQhRaY+DUumQc=
 github.com/golang/mock v1.6.0/go.mod h1:p6yTPP+5HYm5mzsMV8JkE6ZKdX+/wYM6Hr+LicevLPs=
+github.com/mirogon/go_http v0.0.0-20231028163028-723855ecb79a h1:hYue8/lzzQ3e/T/epYc/QqtWRWaMf8/RcNI5gq0uVwA=
+github.com/mirogon/go_http v0.0.0-20231028163028-723855ecb79a/go.mod h1:lW8nlgL4l0jnlVZAa5D7JRALIxFJWLeY5UctW5aGzEo=
+github.com/mirogon/go_util v0.1.0 h1:H3epAmeTY8XNyBr55OQFKOwIDfMmp1b9pzPif0QQfsA=
+github.com/mirogon/go_util v0.1.0/go.mod h1:G+YBwD+SqP1yjLo1S5utRhkTxbI67FjB/X9U3ddo1Xw=
 github.com/sashabaranov/go-openai v1.14.2 h1:5DPTtR9JBjKPJS008/A409I5ntFhUPPGCmaAihcPRyo=
 github.com/sashabaranov/go-openai v1.14.2/go.mod h1:lj5b/K+zjTSFxVLijLSTDZuP7adOgerWeFyZLUhAKRg=
 github.com/yuin/goldmark v1.3.5/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1Zlc8k=
