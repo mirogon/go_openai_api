@@ -55,7 +55,7 @@ type AudioToSpeechRequest struct {
 	Voice string `json:"voice"`
 }
 
-func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice string) (string, error) {
+func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice string) ([]byte, error) {
 	request := AudioToSpeechRequest{
 		Model: "tts-1",
 		Input: input,
@@ -66,10 +66,11 @@ func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice s
 
 	buffer := make([]byte, 1000000)
 	size, _ := response.Body.Read(buffer)
+	buffer = buffer[:size]
 	fmt.Println("Size: ", size)
 	fmt.Println(string(buffer))
 
-	return "", nil
+	return buffer, nil
 }
 
 func sendRequest(requestMethod string, requestUrl string, requestBody interface{}, openAiKey string) (*http.Response, error) {
