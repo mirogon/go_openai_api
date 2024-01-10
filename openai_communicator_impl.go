@@ -51,8 +51,8 @@ func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string) (strin
 
 type AudioToSpeechRequest struct {
 	Model string `json:"model"`
-	Input string `json:"inpout"`
-	Voice string `json:"alloy"`
+	Input string `json:"input"`
+	Voice string `json:"voice"`
 }
 
 func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice string) (string, error) {
