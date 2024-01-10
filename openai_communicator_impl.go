@@ -3,6 +3,7 @@ package openai_api
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strings"
 
@@ -55,14 +56,14 @@ type AudioToSpeechRequest struct {
 }
 
 func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice string) (string, error) {
-	/*request := AudioToSpeechRequest{
+	request := AudioToSpeechRequest{
 		Model: "tts-1",
 		Input: input,
 		Voice: voice,
 	}
 
 	response, _ := sendRequest("POST", "https://api.openai.com/v1/audio/speech", request, communicator.OpenAiKey)
-	*/
+	fmt.Println(response)
 
 	return "", nil
 }
