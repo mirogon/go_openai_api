@@ -8,6 +8,7 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
+	openai_data "github.com/mirogon/go_openai_api/data"
 )
 
 // MockOpenAiApiCommunicator is a mock of OpenAiApiCommunicator interface.
@@ -49,18 +50,18 @@ func (mr *MockOpenAiApiCommunicatorMockRecorder) GenerateImage(input interface{}
 }
 
 // GptCompletion mocks base method.
-func (m *MockOpenAiApiCommunicator) GptCompletion(message string, maxToken int, gptModel string) (string, error) {
+func (m *MockOpenAiApiCommunicator) GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GptCompletion", message, maxToken, gptModel)
+	ret := m.ctrl.Call(m, "GptCompletion", messages, maxToken, gptModel)
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GptCompletion indicates an expected call of GptCompletion.
-func (mr *MockOpenAiApiCommunicatorMockRecorder) GptCompletion(message, maxToken, gptModel interface{}) *gomock.Call {
+func (mr *MockOpenAiApiCommunicatorMockRecorder) GptCompletion(messages, maxToken, gptModel interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GptCompletion", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GptCompletion), message, maxToken, gptModel)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GptCompletion", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GptCompletion), messages, maxToken, gptModel)
 }
 
 // TextToSpeech mocks base method.

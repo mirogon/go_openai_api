@@ -1,5 +1,7 @@
 package openai_api
 
+import openai_data "github.com/mirogon/go_openai_api/data"
+
 type GptCompletionRequestData struct {
 	GptSessionId uint64
 	TextInput    string
@@ -12,7 +14,7 @@ type GptCompletionResponse struct {
 }
 
 type OpenAiApiCommunicator interface {
-	GptCompletion(message string, maxToken int, gptModel string) (string, error)
+	GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, error)
 	GenerateImage(input string) (string, error)
 	TextToSpeech(input string, voice string) ([]byte, error)
 }

@@ -21,12 +21,7 @@ func CreateOpenAiApiCommunicator(client *openai.Client, openAiKey string) OpenAi
 	return OpenAiApiCommunicatorImpl{Client: client, OpenAiKey: openAiKey}
 }
 
-func (c OpenAiApiCommunicatorImpl) GptCompletion(message string, maxToken int, gptModel string) (string, error) {
-	messages := []openai_data.GptMessage{{
-		Role:    openai.ChatMessageRoleUser,
-		Content: message,
-	}}
-
+func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, error) {
 	request := openai_data.GptRequest{
 		Model:     gptModel,
 		Messages:  messages,
