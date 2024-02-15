@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	http_ "github.com/mirogon/go_http"
+	openai_data "github.com/mirogon/go_openai_api/data"
 	"github.com/sashabaranov/go-openai"
 )
 
@@ -38,6 +39,31 @@ func (c OpenAiApiCommunicatorImpl) GptCompletion(message string, maxToken int) (
 	}
 
 	return resp.Choices[0].Message.Content, nil
+}
+
+func (c OpenAiApiCommunicatorImpl) Gpt4Completion(message string, maxToken int) (string, error) {
+	messages := []openai_data.GptMessage{{
+		Role:    openai.ChatMessageRoleUser,
+		Content: message,
+	}}
+
+	request := openai_data.GptRequest{
+		Model:     openai_data.GPT_4_MODEL,
+		Messages:  messages,
+		MaxTokens: maxToken,
+	}
+
+	resp, err := sendRequest("POST", openai_data.GPT_REQUEST_URL, request, c.OpenAiKey)
+	if err != nil {
+		return "", err
+	}
+
+	body, err := getResponseBody[openai_data.GptResponse](resp)
+	if err != nil {
+		return "", err
+	}
+
+	return body.Choices[0].Message.Content, nil
 }
 
 func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string) (string, error) {
