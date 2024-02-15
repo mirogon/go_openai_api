@@ -48,34 +48,19 @@ func (mr *MockOpenAiApiCommunicatorMockRecorder) GenerateImage(input interface{}
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateImage", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GenerateImage), input)
 }
 
-// Gpt4Completion mocks base method.
-func (m *MockOpenAiApiCommunicator) Gpt4Completion(message string, maxToken int) (string, error) {
-	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Gpt4Completion", message, maxToken)
-	ret0, _ := ret[0].(string)
-	ret1, _ := ret[1].(error)
-	return ret0, ret1
-}
-
-// Gpt4Completion indicates an expected call of Gpt4Completion.
-func (mr *MockOpenAiApiCommunicatorMockRecorder) Gpt4Completion(message, maxToken interface{}) *gomock.Call {
-	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Gpt4Completion", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).Gpt4Completion), message, maxToken)
-}
-
 // GptCompletion mocks base method.
-func (m *MockOpenAiApiCommunicator) GptCompletion(message string, maxToken int) (string, error) {
+func (m *MockOpenAiApiCommunicator) GptCompletion(message string, maxToken int, gptModel string) (string, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GptCompletion", message, maxToken)
+	ret := m.ctrl.Call(m, "GptCompletion", message, maxToken, gptModel)
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error)
 	return ret0, ret1
 }
 
 // GptCompletion indicates an expected call of GptCompletion.
-func (mr *MockOpenAiApiCommunicatorMockRecorder) GptCompletion(message, maxToken interface{}) *gomock.Call {
+func (mr *MockOpenAiApiCommunicatorMockRecorder) GptCompletion(message, maxToken, gptModel interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GptCompletion", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GptCompletion), message, maxToken)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GptCompletion", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GptCompletion), message, maxToken, gptModel)
 }
 
 // TextToSpeech mocks base method.
