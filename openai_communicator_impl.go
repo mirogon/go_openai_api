@@ -99,9 +99,7 @@ func sendRequest(requestMethod string, requestUrl string, requestBody interface{
 }
 
 func getResponseBody[responseType any](response *http.Response) (responseType, error) {
-	buffer := make([]byte, 100000)
-	size, _ := response.Body.Read(buffer)
-	buffer = buffer[:size]
+	buffer, _ := io.ReadAll(response.Body)
 
 	var responseBody responseType
 	err := json.Unmarshal(buffer, &responseBody)
