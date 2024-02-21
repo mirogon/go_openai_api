@@ -3,6 +3,7 @@ package openai_api
 import (
 	"context"
 	"encoding/json"
+	"errors"
 	"io"
 	"net/http"
 	"strings"
@@ -36,6 +37,10 @@ func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessa
 	body, err := getResponseBody[openai_data.GptResponse](resp)
 	if err != nil {
 		return "", err
+	}
+
+	if len(body.Choices) < 0 {
+		return "", errors.New("No response from openai")
 	}
 
 	return body.Choices[0].Message.Content, nil
