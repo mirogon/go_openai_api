@@ -39,7 +39,7 @@ func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessa
 		return "", err
 	}
 
-	if len(body.Choices) < 0 {
+	if len(body.Choices) < 1 {
 		return "", errors.New("No response from openai")
 	}
 
