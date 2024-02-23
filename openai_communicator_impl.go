@@ -34,6 +34,10 @@ func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessa
 		return "", err
 	}
 
+	if resp.StatusCode != 200 {
+		return "", errors.New(resp.Status)
+	}
+
 	body, err := getResponseBody[openai_data.GptResponse](resp)
 	if err != nil {
 		return "", err
