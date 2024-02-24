@@ -119,7 +119,7 @@ func getResponseBody[responseType any](response *http.Response) (responseType, e
 	var responseBody responseType
 	err := json.Unmarshal(buffer, &responseBody)
 	if err != nil {
-		return responseBody, es.NewError("W4rNoZ", "json_Unmarshal", nil)
+		return responseBody, es.NewError("W4rNoZ", err.Error(), nil)
 	}
 	return responseBody, nil
 }
