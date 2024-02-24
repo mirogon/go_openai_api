@@ -8,6 +8,7 @@ import (
 	reflect "reflect"
 
 	gomock "github.com/golang/mock/gomock"
+	error_system "github.com/mirogon/go_error_system"
 	openai_data "github.com/mirogon/go_openai_api/data"
 )
 
@@ -35,11 +36,11 @@ func (m *MockOpenAiApiCommunicator) EXPECT() *MockOpenAiApiCommunicatorMockRecor
 }
 
 // GenerateImage mocks base method.
-func (m *MockOpenAiApiCommunicator) GenerateImage(input string) (string, error) {
+func (m *MockOpenAiApiCommunicator) GenerateImage(input string) (string, error_system.Error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GenerateImage", input)
 	ret0, _ := ret[0].(string)
-	ret1, _ := ret[1].(error)
+	ret1, _ := ret[1].(error_system.Error)
 	return ret0, ret1
 }
 
@@ -50,11 +51,11 @@ func (mr *MockOpenAiApiCommunicatorMockRecorder) GenerateImage(input interface{}
 }
 
 // GptCompletion mocks base method.
-func (m *MockOpenAiApiCommunicator) GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, error) {
+func (m *MockOpenAiApiCommunicator) GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, error_system.Error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GptCompletion", messages, maxToken, gptModel)
 	ret0, _ := ret[0].(string)
-	ret1, _ := ret[1].(error)
+	ret1, _ := ret[1].(error_system.Error)
 	return ret0, ret1
 }
 
@@ -65,11 +66,11 @@ func (mr *MockOpenAiApiCommunicatorMockRecorder) GptCompletion(messages, maxToke
 }
 
 // TextToSpeech mocks base method.
-func (m *MockOpenAiApiCommunicator) TextToSpeech(input, voice string) ([]byte, error) {
+func (m *MockOpenAiApiCommunicator) TextToSpeech(input, voice string) ([]byte, error_system.Error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "TextToSpeech", input, voice)
 	ret0, _ := ret[0].([]byte)
-	ret1, _ := ret[1].(error)
+	ret1, _ := ret[1].(error_system.Error)
 	return ret0, ret1
 }
 

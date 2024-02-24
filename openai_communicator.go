@@ -1,6 +1,9 @@
 package openai_api
 
-import openai_data "github.com/mirogon/go_openai_api/data"
+import (
+	err "github.com/mirogon/go_error_system"
+	openai_data "github.com/mirogon/go_openai_api/data"
+)
 
 type GptCompletionRequestData struct {
 	GptSessionId uint64
@@ -14,7 +17,7 @@ type GptCompletionResponse struct {
 }
 
 type OpenAiApiCommunicator interface {
-	GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, error)
-	GenerateImage(input string) (string, error)
-	TextToSpeech(input string, voice string) ([]byte, error)
+	GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, err.Error)
+	GenerateImage(input string) (string, err.Error)
+	TextToSpeech(input string, voice string) ([]byte, err.Error)
 }
