@@ -77,8 +77,11 @@ func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice s
 		return nil, err
 	}
 
-	bytes, err := io.ReadAll(response.Body)
+	if response.StatusCode != 200 {
+		return nil, errors.New(response.Status)
+	}
 
+	bytes, err := io.ReadAll(response.Body)
 	return bytes, err
 }
 
