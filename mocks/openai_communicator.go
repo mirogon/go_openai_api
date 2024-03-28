@@ -36,18 +36,18 @@ func (m *MockOpenAiApiCommunicator) EXPECT() *MockOpenAiApiCommunicatorMockRecor
 }
 
 // GenerateImage mocks base method.
-func (m *MockOpenAiApiCommunicator) GenerateImage(input string) (string, error_system.Error) {
+func (m *MockOpenAiApiCommunicator) GenerateImage(input, resolution string) (string, error_system.Error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "GenerateImage", input)
+	ret := m.ctrl.Call(m, "GenerateImage", input, resolution)
 	ret0, _ := ret[0].(string)
 	ret1, _ := ret[1].(error_system.Error)
 	return ret0, ret1
 }
 
 // GenerateImage indicates an expected call of GenerateImage.
-func (mr *MockOpenAiApiCommunicatorMockRecorder) GenerateImage(input interface{}) *gomock.Call {
+func (mr *MockOpenAiApiCommunicatorMockRecorder) GenerateImage(input, resolution interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateImage", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GenerateImage), input)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GenerateImage", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GenerateImage), input, resolution)
 }
 
 // GptCompletion mocks base method.
