@@ -62,7 +62,7 @@ func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string, numIma
 	}
 
 	if len(result.Data) < 1 {
-		return nil, es.NewError("leBfUz", "GenerateImage_GetResponseBody_"+err.Error(), err)
+		return nil, es.NewError("leBfUz", "GenerateImage_GetResponseBody_NoData", err)
 	}
 
 	var urls []string
