@@ -69,3 +69,19 @@ type GptVisionRequest struct {
 	Messages  []GptVisionMessage `json:"messages"`
 	MaxTokens int                `json:"max_tokens"`
 }
+
+// DALLE
+type DallERequest struct {
+	Model  string `json:"model"`
+	Prompt string `json:"prompt"`
+	N      int    `json:"n"`
+	Size   string `json:"size"`
+}
+
+type DallEResponse struct {
+	Created int        `json:"created"`
+	Data    []DallEUrl `json:"data"`
+}
+type DallEUrl struct {
+	Url string `json:"url"`
+}

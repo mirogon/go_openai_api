@@ -1,7 +1,6 @@
 package openai_api
 
 import (
-	"context"
 	"encoding/json"
 	"io"
 	"net/http"
@@ -50,13 +49,19 @@ func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessa
 	return body.Choices[0].Message.Content, nil
 }
 
-func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string) (string, es.Error) {
-	imageReq := openai.ImageRequest{Prompt: input, Size: "1024x1024"}
-	response, err := communicator.Client.CreateImage(context.TODO(), imageReq)
+func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string, resolution string) (string, es.Error) {
+	imageReq := openai_data.DallERequest{Prompt: input, Size: resolution, N: 1}
+	resp, err := sendRequest("POST", "https://api.openai.com/v1/images/generations", imageReq, communicator.OpenAiKey)
 	if err != nil {
-		return "", es.NewError("BDO041", err.Error(), nil)
+		return "", es.NewError("5XBXhG", "GenerateImage_SendRequest_", err)
 	}
-	return response.Data[0].URL, nil
+
+	result, err := getResponseBody[openai_data.DallEResponse](resp)
+	if err != nil {
+		return "", es.NewError("W19wAL", "GenerateImage_GetResponseBody_", err)
+	}
+
+	return result.Data[0].Url, nil
 }
 
 type AudioToSpeechRequest struct {
