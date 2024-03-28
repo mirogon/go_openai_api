@@ -2,6 +2,7 @@ package openai_api
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -61,6 +62,10 @@ func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string, resolu
 		return "", es.NewError("W19wAL", "GenerateImage_GetResponseBody_", err)
 	}
 
+	fmt.Println(resp)
+	if len(result.Data) < 1 {
+		return "", es.NewError("leBfUz", "GenerateImage_GetResponseBody_", err)
+	}
 	return result.Data[0].Url, nil
 }
 
