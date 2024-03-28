@@ -50,7 +50,7 @@ func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessa
 }
 
 func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string, resolution string) (string, es.Error) {
-	imageReq := openai_data.DallERequest{Prompt: input, Size: resolution, N: 1}
+	imageReq := openai_data.DallERequest{Model: "dall-e-3", Prompt: input, Size: resolution, N: 1}
 	resp, err := sendRequest("POST", "https://api.openai.com/v1/images/generations", imageReq, communicator.OpenAiKey)
 	if err != nil {
 		return "", es.NewError("5XBXhG", "GenerateImage_SendRequest_", err)
