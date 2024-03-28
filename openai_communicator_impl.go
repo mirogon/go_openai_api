@@ -58,11 +58,11 @@ func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string, numIma
 
 	result, err := getResponseBody[openai_data.DallEResponse](resp)
 	if err != nil {
-		return nil, es.NewError("W19wAL", "GenerateImage_GetResponseBody_", err)
+		return nil, es.NewError("W19wAL", "GenerateImage_GetResponseBody_"+err.Error(), err)
 	}
 
 	if len(result.Data) < 1 {
-		return nil, es.NewError("leBfUz", "GenerateImage_GetResponseBody_", err)
+		return nil, es.NewError("leBfUz", "GenerateImage_GetResponseBody_"+err.Error(), err)
 	}
 
 	var urls []string
