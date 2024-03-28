@@ -18,6 +18,6 @@ type GptCompletionResponse struct {
 
 type OpenAiApiCommunicator interface {
 	GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, err.Error)
-	GenerateImage(input string, numImages int, resolution string) (string, err.Error)
+	GenerateImage(input string, numImages int, resolution string) ([]string, err.Error)
 	TextToSpeech(input string, voice string) ([]byte, err.Error)
 }
