@@ -49,22 +49,27 @@ func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessa
 	return body.Choices[0].Message.Content, nil
 }
 
-func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string, resolution string) (string, es.Error) {
-	imageReq := openai_data.DallERequest{Model: "dall-e-3", Prompt: input, Size: resolution, N: 1}
+func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string, numImages int, resolution string) ([]string, es.Error) {
+	imageReq := openai_data.DallERequest{Model: "dall-e-3", Prompt: input, Size: resolution, N: numImages}
 	resp, err := sendRequest("POST", "https://api.openai.com/v1/images/generations", imageReq, communicator.OpenAiKey)
 	if err != nil {
-		return "", es.NewError("5XBXhG", "GenerateImage_SendRequest_", err)
+		return nil, es.NewError("5XBXhG", "GenerateImage_SendRequest_", err)
 	}
 
 	result, err := getResponseBody[openai_data.DallEResponse](resp)
 	if err != nil {
-		return "", es.NewError("W19wAL", "GenerateImage_GetResponseBody_", err)
+		return nil, es.NewError("W19wAL", "GenerateImage_GetResponseBody_", err)
 	}
 
 	if len(result.Data) < 1 {
-		return "", es.NewError("leBfUz", "GenerateImage_GetResponseBody_", err)
+		return nil, es.NewError("leBfUz", "GenerateImage_GetResponseBody_", err)
 	}
-	return result.Data[0].Url, nil
+
+	var urls []string
+	for i := 0; i < len(result.Data); i++ {
+		urls = append(urls, result.Data[i].Url)
+	}
+	return urls, nil
 }
 
 type AudioToSpeechRequest struct {
