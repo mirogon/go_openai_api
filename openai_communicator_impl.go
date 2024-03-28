@@ -2,7 +2,6 @@ package openai_api
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -56,8 +55,6 @@ func (communicator OpenAiApiCommunicatorImpl) GenerateImage(input string, numIma
 	if err != nil {
 		return nil, es.NewError("5XBXhG", "GenerateImage_SendRequest_", err)
 	}
-
-	fmt.Println(resp)
 
 	result, err := getResponseBody[openai_data.DallEResponse](resp)
 	if err != nil {
