@@ -103,9 +103,9 @@ func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice s
 }
 
 func (communicator OpenAiApiCommunicatorImpl) GptVision(input string, imageUrl string) (string, es.Error) {
-	inputContent := openai_data.GptVisionContent{Type: "text", Text: input}
-	imgContent := openai_data.GptVisionContent{Type: "image_url", ImageUrl: openai_data.GptVisionContentUrl{Url: imageUrl}}
-	msg := openai_data.GptVisionMessage{Role: "user", Content: []openai_data.GptVisionContent{inputContent, imgContent}}
+	inputContent := openai_data.GptVisionTextContent{Type: "text", Text: input}
+	imgContent := openai_data.GptVisionUrlContent{Type: "image_url", ImageUrl: openai_data.GptVisionContentUrl{Url: imageUrl}}
+	msg := openai_data.GptVisionMessage{Role: "user", Content: []interface{}{inputContent, imgContent}}
 	req := openai_data.GptVisionRequest{Model: openai_data.GPT_VISION_MODEL, MaxTokens: 300, Messages: []openai_data.GptVisionMessage{msg}}
 
 	resp, err := sendRequest("POST", "https://api.openai.com/v1/chat/completions", req, communicator.OpenAiKey)

@@ -10,13 +10,16 @@ type GptVisionRequest struct {
 }
 
 type GptVisionMessage struct {
-	Role    string             `json:"role"`
-	Content []GptVisionContent `json:"content"`
+	Role    string        `json:"role"`
+	Content []interface{} `json:"content"`
 }
 
-type GptVisionContent struct {
+type GptVisionTextContent struct {
+	Type string `json:"type"`
+	Text string `json:"text"`
+}
+type GptVisionUrlContent struct {
 	Type     string              `json:"type"`
-	Text     string              `json:"text"`
 	ImageUrl GptVisionContentUrl `json:"image_url"`
 }
 
