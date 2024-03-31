@@ -2,7 +2,6 @@ package openai_api
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -106,14 +105,12 @@ func (communicator OpenAiApiCommunicatorImpl) GptVision(input string, imageUrl s
 	inputContent := openai_data.GptVisionTextContent{Type: "text", Text: input}
 	imgContent := openai_data.GptVisionUrlContent{Type: "image_url", ImageUrl: openai_data.GptVisionContentUrl{Url: imageUrl}}
 	msg := openai_data.GptVisionMessage{Role: "user", Content: []interface{}{inputContent, imgContent}}
-	req := openai_data.GptVisionRequest{Model: openai_data.GPT_VISION_MODEL, MaxTokens: 300, Messages: []openai_data.GptVisionMessage{msg}}
+	req := openai_data.GptVisionRequest{Model: openai_data.GPT_VISION_MODEL, MaxTokens: 150, Messages: []openai_data.GptVisionMessage{msg}}
 
 	resp, err := sendRequest("POST", "https://api.openai.com/v1/chat/completions", req, communicator.OpenAiKey)
 	if err != nil {
 		return "", es.NewError("duzkCC", "sendRequest_"+err.Error(), err)
 	}
-
-	fmt.Println(resp)
 
 	response, err := getResponseBody[openai_data.GptResponse](resp)
 	if err != nil {
