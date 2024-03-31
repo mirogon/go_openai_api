@@ -50,26 +50,6 @@ type GptResponse struct {
 	Usage   GptUsage              `json:"usage"`
 }
 
-// GPT VISION
-const GPT_VISION_MODEL string = "gpt-4-vision-preview"
-
-type GptVisionMessageContent struct {
-	Type     string `json:"type"`
-	Text     string `json:"text"`
-	ImageUrl string `json:"image_url"`
-}
-
-type GptVisionMessage struct {
-	Role    string                    `json:"role"`
-	Content []GptVisionMessageContent `json:"content"`
-}
-
-type GptVisionRequest struct {
-	Model     string             `json:"model"`
-	Messages  []GptVisionMessage `json:"messages"`
-	MaxTokens int                `json:"max_tokens"`
-}
-
 // DALLE
 type DallERequest struct {
 	Model  string `json:"model"`

@@ -65,6 +65,21 @@ func (mr *MockOpenAiApiCommunicatorMockRecorder) GptCompletion(messages, maxToke
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GptCompletion", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GptCompletion), messages, maxToken, gptModel)
 }
 
+// GptVision mocks base method.
+func (m *MockOpenAiApiCommunicator) GptVision(input, imageUrl string) (string, error_system.Error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GptVision", input, imageUrl)
+	ret0, _ := ret[0].(string)
+	ret1, _ := ret[1].(error_system.Error)
+	return ret0, ret1
+}
+
+// GptVision indicates an expected call of GptVision.
+func (mr *MockOpenAiApiCommunicatorMockRecorder) GptVision(input, imageUrl interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GptVision", reflect.TypeOf((*MockOpenAiApiCommunicator)(nil).GptVision), input, imageUrl)
+}
+
 // TextToSpeech mocks base method.
 func (m *MockOpenAiApiCommunicator) TextToSpeech(input, voice string) ([]byte, error_system.Error) {
 	m.ctrl.T.Helper()

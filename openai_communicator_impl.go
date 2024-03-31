@@ -101,6 +101,29 @@ func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice s
 	return bytes, nil
 }
 
+func (communicator OpenAiApiCommunicatorImpl) GptVision(input string, imageUrl string) (string, es.Error) {
+	inputContent := openai_data.GptVisionContent{Type: "text", Text: input}
+	imgContent := openai_data.GptVisionContent{Type: "image_url", ImageUrl: openai_data.GptVisionContentUrl{Url: imageUrl}}
+	msg := openai_data.GptVisionMessage{Role: "user", Content: []openai_data.GptVisionContent{inputContent, imgContent}}
+	req := openai_data.GptVisionRequest{Model: openai_data.GPT_VISION_MODEL, MaxTokens: 300, Messages: []openai_data.GptVisionMessage{msg}}
+
+	resp, err := sendRequest("POST", "https://api.openai.com/v1/chat/completions", req, communicator.OpenAiKey)
+	if err != nil {
+		return "", es.NewError("duzkCC", "sendRequest_"+err.Error(), err)
+	}
+
+	response, err := getResponseBody[openai_data.GptResponse](resp)
+	if err != nil {
+		return "", es.NewError("PvAOLe", "getResponseBody_"+err.Error(), err)
+	}
+
+	if len(response.Choices) < 1 {
+		return "", es.NewError("zODP8j", "responseNoChoices", nil)
+	}
+
+	return response.Choices[0].Message.Content, nil
+}
+
 func sendRequest(requestMethod string, requestUrl string, requestBody interface{}, openAiKey string) (*http.Response, es.Error) {
 	bodyRequestJson, err := json.Marshal(requestBody)
 	if err != nil {
