@@ -2,6 +2,7 @@ package openai_api
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"net/http"
 	"strings"
@@ -111,6 +112,8 @@ func (communicator OpenAiApiCommunicatorImpl) GptVision(input string, imageUrl s
 	if err != nil {
 		return "", es.NewError("duzkCC", "sendRequest_"+err.Error(), err)
 	}
+
+	fmt.Println(resp)
 
 	response, err := getResponseBody[openai_data.GptResponse](resp)
 	if err != nil {
