@@ -4,10 +4,16 @@ github.com/mirogon/go_error_system v0.0.0-20240224031906-98d6c3deb611 h1:KCIJPcT
 github.com/mirogon/go_error_system v0.0.0-20240224031906-98d6c3deb611/go.mod h1:eSkVtZ363mqLlzd0wuWXUJJz6XPy8qdYQBgaz93yFPg=
 github.com/mirogon/go_error_system v0.0.0-20240224041051-7e32d43173ab h1:ZFOoBppJctSHXJYFoYXZkr8xY4JPUPA3GOLPT+goG+I=
 github.com/mirogon/go_error_system v0.0.0-20240224041051-7e32d43173ab/go.mod h1:eSkVtZ363mqLlzd0wuWXUJJz6XPy8qdYQBgaz93yFPg=
+github.com/mirogon/go_error_system v0.0.0-20240224100122-6b2e3f290af7 h1:hNmySwFRG5ObWle3o6ogAYGc2PLp5WzFUBXlNP9PGMY=
+github.com/mirogon/go_error_system v0.0.0-20240224100122-6b2e3f290af7/go.mod h1:eSkVtZ363mqLlzd0wuWXUJJz6XPy8qdYQBgaz93yFPg=
 github.com/mirogon/go_http v0.0.0-20231028163028-723855ecb79a h1:hYue8/lzzQ3e/T/epYc/QqtWRWaMf8/RcNI5gq0uVwA=
 github.com/mirogon/go_http v0.0.0-20231028163028-723855ecb79a/go.mod h1:lW8nlgL4l0jnlVZAa5D7JRALIxFJWLeY5UctW5aGzEo=
 github.com/mirogon/go_http v0.0.0-20240119100026-3aa74d2432b8 h1:dZstfZ24OngkJT+abdpBw5zpxYI20dA2WwQaMxfkK1U=
 github.com/mirogon/go_http v0.0.0-20240119100026-3aa74d2432b8/go.mod h1:lW8nlgL4l0jnlVZAa5D7JRALIxFJWLeY5UctW5aGzEo=
+github.com/mirogon/go_http v0.0.0-20240404135254-c9556e040c3c h1:r6FFyn2GJing47638jQlrpq1A5/mSu2Mp0WDu/d4eu0=
+github.com/mirogon/go_http v0.0.0-20240404135254-c9556e040c3c/go.mod h1:5wzJpiyfKRHc8QTh3roKPRWm0SNzLGC7G7K3kHoxhqE=
+github.com/mirogon/go_util v0.0.0-20240404134949-03a55bc17431 h1:Ra3k7/Oxd2btlRCDsgXE5JIjPHRaLqHgU7/GngEzC/0=
+github.com/mirogon/go_util v0.0.0-20240404134949-03a55bc17431/go.mod h1:G+YBwD+SqP1yjLo1S5utRhkTxbI67FjB/X9U3ddo1Xw=
 github.com/mirogon/go_util v0.1.0 h1:H3epAmeTY8XNyBr55OQFKOwIDfMmp1b9pzPif0QQfsA=
 github.com/mirogon/go_util v0.1.0/go.mod h1:G+YBwD+SqP1yjLo1S5utRhkTxbI67FjB/X9U3ddo1Xw=
 github.com/mirogon/go_util v0.2.0 h1:dr2L4A/JwfCSVsqT1/7a9ggB8LyTinBNwTrTCBULArI=
@@ -16,6 +22,8 @@ github.com/sashabaranov/go-openai v1.14.2 h1:5DPTtR9JBjKPJS008/A409I5ntFhUPPGCma
 github.com/sashabaranov/go-openai v1.14.2/go.mod h1:lj5b/K+zjTSFxVLijLSTDZuP7adOgerWeFyZLUhAKRg=
 github.com/sashabaranov/go-openai v1.20.0 h1:r9WiwJY6Q2aPDhVyfOSKm83Gs04ogN1yaaBoQOnusS4=
 github.com/sashabaranov/go-openai v1.20.0/go.mod h1:lj5b/K+zjTSFxVLijLSTDZuP7adOgerWeFyZLUhAKRg=
+github.com/sashabaranov/go-openai v1.20.4 h1:095xQ/fAtRa0+Rj21sezVJABgKfGPNbyx/sAN/hJUmg=
+github.com/sashabaranov/go-openai v1.20.4/go.mod h1:lj5b/K+zjTSFxVLijLSTDZuP7adOgerWeFyZLUhAKRg=
 github.com/yuin/goldmark v1.3.5/go.mod h1:mwnBkeHKe2W/ZEtQ+71ViKU8L12m81fl3OWwC1Zlc8k=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550/go.mod h1:yigFU9vqHzYiE8UmvKecakEJjdnWj3jj499lnFckfCI=
