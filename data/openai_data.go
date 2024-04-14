@@ -3,7 +3,7 @@ package openai_data
 const GPT_REQUEST_URL string = "https://api.openai.com/v1/chat/completions"
 
 const GPT_3_MODEL string = "gpt-3.5-turbo"
-const GPT_4_MODEL string = "gpt-4-turbo-preview"
+const GPT_4_MODEL string = "gpt-4-turbo"
 
 //GPT CHAT
 
