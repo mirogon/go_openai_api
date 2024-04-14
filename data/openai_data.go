@@ -13,13 +13,13 @@ type GptMessageOld struct {
 }
 
 type GptRequest struct {
-	Model            string          `json:"model"`
-	Messages         []GptMessageOld `json:"messages"`
-	Temperature      int             `json:"temperature"`
-	MaxTokens        int             `json:"max_tokens"`
-	TopP             int             `json:"top_p"`
-	FrequencyPenalty int             `json:"frequency_penalty"`
-	PresencePenalty  int             `json:"presence_penalty"`
+	Model            string       `json:"model"`
+	Messages         []GptMessage `json:"messages"`
+	Temperature      int          `json:"temperature"`
+	MaxTokens        int          `json:"max_tokens"`
+	TopP             int          `json:"top_p"`
+	FrequencyPenalty int          `json:"frequency_penalty"`
+	PresencePenalty  int          `json:"presence_penalty"`
 }
 
 type GptUsage struct {

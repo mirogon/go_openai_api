@@ -21,7 +21,7 @@ func CreateOpenAiApiCommunicator(client *openai.Client, openAiKey string) OpenAi
 	return OpenAiApiCommunicatorImpl{Client: client, OpenAiKey: openAiKey}
 }
 
-func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessageOld, maxToken int, gptModel string) (string, es.Error) {
+func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, es.Error) {
 	request := openai_data.GptRequest{
 		Model:     gptModel,
 		Messages:  messages,
