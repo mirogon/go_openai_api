@@ -21,7 +21,7 @@ func CreateOpenAiApiCommunicator(client *openai.Client, openAiKey string) OpenAi
 	return OpenAiApiCommunicatorImpl{Client: client, OpenAiKey: openAiKey}
 }
 
-func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, es.Error) {
+func (c OpenAiApiCommunicatorImpl) GptCompletion(messages []openai_data.GptMessageOld, maxToken int, gptModel string) (string, es.Error) {
 	request := openai_data.GptRequest{
 		Model:     gptModel,
 		Messages:  messages,
@@ -102,10 +102,10 @@ func (communicator OpenAiApiCommunicatorImpl) TextToSpeech(input string, voice s
 }
 
 func (communicator OpenAiApiCommunicatorImpl) GptVision(input string, imageUrl string) (string, es.Error) {
-	inputContent := openai_data.GptVisionTextContent{Type: "text", Text: input}
-	imgContent := openai_data.GptVisionUrlContent{Type: "image_url", ImageUrl: openai_data.GptVisionContentUrl{Url: imageUrl}}
-	msg := openai_data.GptVisionMessage{Role: "user", Content: []interface{}{inputContent, imgContent}}
-	req := openai_data.GptVisionRequest{Model: openai_data.GPT_VISION_MODEL, MaxTokens: 150, Messages: []openai_data.GptVisionMessage{msg}}
+	inputContent := openai_data.GptMessageTextContent{Type: "text", Text: input}
+	imgContent := openai_data.GptMessageUrlContent{Type: "image_url", ImageUrl: openai_data.GptContentUrl{Url: imageUrl}}
+	msg := openai_data.GptMessage{Role: "user", Content: []interface{}{inputContent, imgContent}}
+	req := openai_data.GptVisionRequest{Model: openai_data.GPT_VISION_MODEL, MaxTokens: 150, Messages: []openai_data.GptMessage{msg}}
 
 	resp, err := sendRequest("POST", "https://api.openai.com/v1/chat/completions", req, communicator.OpenAiKey)
 	if err != nil {

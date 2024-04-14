@@ -7,19 +7,19 @@ const GPT_4_MODEL string = "gpt-4-turbo-preview"
 
 //GPT CHAT
 
-type GptMessage struct {
+type GptMessageOld struct {
 	Role    string `json:"role"`
 	Content string `json:"content"`
 }
 
 type GptRequest struct {
-	Model            string       `json:"model"`
-	Messages         []GptMessage `json:"messages"`
-	Temperature      int          `json:"temperature"`
-	MaxTokens        int          `json:"max_tokens"`
-	TopP             int          `json:"top_p"`
-	FrequencyPenalty int          `json:"frequency_penalty"`
-	PresencePenalty  int          `json:"presence_penalty"`
+	Model            string          `json:"model"`
+	Messages         []GptMessageOld `json:"messages"`
+	Temperature      int             `json:"temperature"`
+	MaxTokens        int             `json:"max_tokens"`
+	TopP             int             `json:"top_p"`
+	FrequencyPenalty int             `json:"frequency_penalty"`
+	PresencePenalty  int             `json:"presence_penalty"`
 }
 
 type GptUsage struct {
@@ -29,8 +29,8 @@ type GptUsage struct {
 }
 
 type GptCompletionChoice struct {
-	Index   int        `json:"index"`
-	Message GptMessage `json:"message"`
+	Index   int           `json:"index"`
+	Message GptMessageOld `json:"message"`
 	// FinishReason
 	// stop: API returned complete message,
 	// or a message terminated by one of the stop sequences provided via the stop parameter

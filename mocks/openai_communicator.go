@@ -51,7 +51,7 @@ func (mr *MockOpenAiApiCommunicatorMockRecorder) GenerateImage(input, numImages,
 }
 
 // GptCompletion mocks base method.
-func (m *MockOpenAiApiCommunicator) GptCompletion(messages []openai_data.GptMessage, maxToken int, gptModel string) (string, error_system.Error) {
+func (m *MockOpenAiApiCommunicator) GptCompletion(messages []openai_data.GptMessageOld, maxToken int, gptModel string) (string, error_system.Error) {
 	m.ctrl.T.Helper()
 	ret := m.ctrl.Call(m, "GptCompletion", messages, maxToken, gptModel)
 	ret0, _ := ret[0].(string)
